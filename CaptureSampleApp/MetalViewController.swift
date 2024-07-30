@@ -1,18 +1,21 @@
 //
-//  ViewController.swift
+//  MetalViewController.swift
 //  CaptureSampleApp
 //
 //  Created by AK on 7/28/24.
 //
 
+import Foundation
 import AVFoundation
 import Metal
+import MetalKit
 import UIKit
 import Photos
 
-/*
-class ViewController: UIViewController {
-
+class MetalViewController: UIViewController {
+    
+    
+    
     private var highFPSCapture: HighFPSCapture!
 
         override func viewDidLoad() {
@@ -32,26 +35,16 @@ class ViewController: UIViewController {
         }
 }
 
-
-
-private class HighFPSCapture: NSObject {
+class HighFPSCapture: NSObject {
     private var session: AVCaptureSession!
     private var videoOutput: AVCaptureVideoDataOutput!
     private var previewLayer: AVCaptureVideoPreviewLayer!
-    private var device: MTLDevice!
-    private var commandQueue: MTLCommandQueue!
     var captureDevice: AVCaptureDevice?
     
     override init() {
         super.init()
-        self.device = MTLCreateSystemDefaultDevice()
-        self.commandQueue = device?.makeCommandQueue()
         
-        
-        //let devices = AVCaptureDevice.DiscoverySession.init(deviceTypes: [.builtInDualCamera, .builtInDualWideCamera,.builtInTripleCamera,.builtInWideAngleCamera, .builtInTelephotoCamera,.continuityCamera], mediaType: .video, position: .back)
         let devices = AVCaptureDevice.devices()
-        
-        // 1
         for device in devices {
             // 2
             if (device.hasMediaType(.video)) {
@@ -67,20 +60,17 @@ private class HighFPSCapture: NSObject {
                 }
             }
         }
+        
+        setupCaptureSession()
+        requestPhotoLibraryAccess()
     }
 
     private func setupCaptureSession() {
         session = AVCaptureSession()
         session.beginConfiguration()
 
-        
-        
         //guard let camera = AVCaptureDevice.default(for: .video) else { return }
-        
-        if var camera = captureDevice {
-            
-           
-            
+        if let camera = captureDevice {
             
             do {
                 let input = try AVCaptureDeviceInput(device: camera)
@@ -89,7 +79,7 @@ private class HighFPSCapture: NSObject {
                 }
                 
                 videoOutput = AVCaptureVideoDataOutput()
-                //videoOutput.alwaysDiscardsLateVideoFrames = true
+                videoOutput.alwaysDiscardsLateVideoFrames = true
                 videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
                 if session.canAddOutput(videoOutput) {
                     session.addOutput(videoOutput)
@@ -99,7 +89,9 @@ private class HighFPSCapture: NSObject {
                 previewLayer.videoGravity = .resizeAspectFill
                 
                 
-                // 1
+                
+                
+                
                 for vFormat in camera.formats {
                     
                     // 2
@@ -107,18 +99,27 @@ private class HighFPSCapture: NSObject {
                     var frameRates = ranges[0]
                     
                     // 3
-                    //if frameRates.maxFrameRate == 240 {
-                        
-                        // 4
-                        try! camera.lockForConfiguration()
-                        camera.activeFormat = vFormat
-                        //camera.activeVideoMinFrameDuration = CMTime(value: 1, timescale: 240)
-                        //camera.activeVideoMaxFrameDuration = CMTime(value: 1, timescale: 240)
-                        
-                        camera.unlockForConfiguration()
-                        break
-                    //}
+                    if frameRates.maxFrameRate == 240 {
+                    
+                    // 4
+//                    try! camera.lockForConfiguration()
+//                    camera.activeFormat = vFormat
+//                    camera.activeVideoMinFrameDuration = CMTime(value: 1, timescale: 240)
+//                    camera.activeVideoMaxFrameDuration = CMTime(value: 1, timescale: 240)
+//                    
+//                    camera.unlockForConfiguration()
+                    
+                    
+                    //let maxFrameRate = min(supportedFrameRateRange.maxFrameRate, 240)
+                    try camera.lockForConfiguration()
+                    //camera.activeVideoMinFrameDuration = CMTime(value: 1, timescale: Int32(1))
+                    camera.activeVideoMaxFrameDuration = CMTime(value: 1, timescale: Int32(240))
+                    camera.unlockForConfiguration()
+                    print("Set frame rate to \(camera.activeVideoMaxFrameDuration) fps")
+                    break
+                    }
                 }
+                
 //                try camera.lockForConfiguration()
 //                camera.activeVideoMinFrameDuration = CMTime(value: 1, timescale: 240)
 //                camera.activeVideoMaxFrameDuration = CMTime(value: 1, timescale: 240)
@@ -178,9 +179,9 @@ private class HighFPSCapture: NSObject {
 extension HighFPSCapture: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        // Process pixelBuffer with Metal (if needed)
+        // Save the pixelBuffer to Photos
         //saveFrameToPhotos(pixelBuffer: pixelBuffer)
         print("Captured frame at \(Date())")
     }
 }
-*/
+

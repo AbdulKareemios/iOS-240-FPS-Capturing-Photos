@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4106681F2C57ABCF0003BA77 /* UltraSlowMoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4106681E2C57ABCF0003BA77 /* UltraSlowMoCapture.swift */; };
+		410668212C57B9310003BA77 /* UltraSlowFrameByFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410668202C57B9310003BA77 /* UltraSlowFrameByFrame.swift */; };
 		41FA415C2C5646F000E4C712 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA415B2C5646F000E4C712 /* AppDelegate.swift */; };
 		41FA415E2C5646F000E4C712 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA415D2C5646F000E4C712 /* SceneDelegate.swift */; };
 		41FA41602C5646F000E4C712 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA415F2C5646F000E4C712 /* ViewController.swift */; };
 		41FA41632C5646F000E4C712 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 41FA41622C5646F000E4C712 /* Base */; };
 		41FA41652C5646F300E4C712 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41FA41642C5646F300E4C712 /* Assets.xcassets */; };
 		41FA41682C5646F300E4C712 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 41FA41672C5646F300E4C712 /* Base */; };
+		41FA41702C56677F00E4C712 /* MetalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA416F2C56677F00E4C712 /* MetalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4106681E2C57ABCF0003BA77 /* UltraSlowMoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UltraSlowMoCapture.swift; sourceTree = "<group>"; };
+		410668202C57B9310003BA77 /* UltraSlowFrameByFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UltraSlowFrameByFrame.swift; sourceTree = "<group>"; };
 		41FA41582C5646F000E4C712 /* CaptureSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaptureSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41FA415B2C5646F000E4C712 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41FA415D2C5646F000E4C712 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +29,7 @@
 		41FA41642C5646F300E4C712 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41FA41672C5646F300E4C712 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41FA41692C5646F300E4C712 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41FA416F2C56677F00E4C712 /* MetalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,9 @@
 				41FA415B2C5646F000E4C712 /* AppDelegate.swift */,
 				41FA415D2C5646F000E4C712 /* SceneDelegate.swift */,
 				41FA415F2C5646F000E4C712 /* ViewController.swift */,
+				41FA416F2C56677F00E4C712 /* MetalViewController.swift */,
+				4106681E2C57ABCF0003BA77 /* UltraSlowMoCapture.swift */,
+				410668202C57B9310003BA77 /* UltraSlowFrameByFrame.swift */,
 				41FA41612C5646F000E4C712 /* Main.storyboard */,
 				41FA41642C5646F300E4C712 /* Assets.xcassets */,
 				41FA41662C5646F300E4C712 /* LaunchScreen.storyboard */,
@@ -140,6 +149,9 @@
 			files = (
 				41FA41602C5646F000E4C712 /* ViewController.swift in Sources */,
 				41FA415C2C5646F000E4C712 /* AppDelegate.swift in Sources */,
+				4106681F2C57ABCF0003BA77 /* UltraSlowMoCapture.swift in Sources */,
+				41FA41702C56677F00E4C712 /* MetalViewController.swift in Sources */,
+				410668212C57B9310003BA77 /* UltraSlowFrameByFrame.swift in Sources */,
 				41FA415E2C5646F000E4C712 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
